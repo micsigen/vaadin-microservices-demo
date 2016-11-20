@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.io.Serializable;
 
 @FeignClient(value = "biz-application", fallback = CompanyServiceFallback.class)
-public interface CompanyService extends Serializable {
+public interface CompanyService {
 
     @RequestMapping("/companies")
     Resources<Company> findAll();
