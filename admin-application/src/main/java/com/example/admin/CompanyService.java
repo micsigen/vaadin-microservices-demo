@@ -7,17 +7,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.io.Serializable;
+
 @FeignClient(value = "biz-application", fallback = CompanyServiceFallback.class)
-public interface CompanyService {
+public interface CompanyService extends Serializable {
 
     @RequestMapping("/companies")
     Resources<Company> findAll();
 
     @RequestMapping(value = "/companies", method = RequestMethod.POST)
-    void add(@RequestBody Company company);
+    Company add(@RequestBody Company company);
 
     @RequestMapping(value = "/companies/{id}", method = RequestMethod.PUT)
-    void update(@PathVariable("id") Long id, @RequestBody Company company);
+    Company update(@PathVariable("id") Long id, @RequestBody Company company);
 
     @RequestMapping(value = "/companies/{id}", method = RequestMethod.DELETE)
     void delete(@PathVariable("id") Long id);
