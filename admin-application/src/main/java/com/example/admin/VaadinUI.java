@@ -8,12 +8,6 @@ import org.vaadin.crudui.crud.impl.GridCrud;
 @SpringUI
 public class VaadinUI extends UI {
 
-    private final CompanyService companyService;
-
-    public VaadinUI(CompanyService companyService) {
-        this.companyService = companyService;
-    }
-
     @Override
     protected void init(VaadinRequest request) {
         GridCrud<Company> crud = new GridCrud<>(Company.class);

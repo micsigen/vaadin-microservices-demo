@@ -1,6 +1,5 @@
 package com.example.admin;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,7 +10,6 @@ public class Services {
 
     private static CompanyService companyService;
 
-    @Autowired
     public Services(CompanyService companyService) {
         this.companyService = companyService;
     }
