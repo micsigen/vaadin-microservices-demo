@@ -1,0 +1,55 @@
+version: '3.3'
+
+services:
+
+  biz-application:
+    build: 
+      context: biz-application
+    image: micsigen/vaadin-microservice-biz-application
+    networks:
+     - vaadin-microservice
+    deploy:
+      replicas: 1
+
+  admin-application:
+    build: 
+      context: admin-application
+    image: micsigen/vaadin-microservice-admin-application
+    networks:
+     - vaadin-microservice
+    deploy:
+      replicas: 1
+
+  # news-application:
+  #   build: 
+  #     context: news-application
+  #   image: micsigen/vaadin-microservice-news-application
+  #   networks:
+  #    - vaadin-microservice
+  #   deploy:
+  #     replicas: 1
+
+  # proxy-server:
+  #   build: 
+  #     context: proxy-server
+  #   image: micsigen/vaadin-microservice-proxy-server
+  #   networks:
+  #    - vaadin-microservice
+  #   deploy:
+  #     replicas: 1
+
+  # website-application:
+  #   build: 
+  #     context: website-application
+  #   image: micsigen/vaadin-microservice-website-application
+  #   ports:
+  #    - "8080:8080"
+  #   networks:
+  #    - vaadin-microservice
+  #   deploy:
+  #     replicas: 1
+
+networks:
+
+  vaadin-microservice:
+    driver: bridge
