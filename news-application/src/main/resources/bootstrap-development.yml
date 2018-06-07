@@ -21,4 +21,6 @@ feign.hystrix.enabled: true
 
 hazelcast.max.no.heartbeat.seconds: 60
 
+biz.application.name: biz-application
+
 biz-application.url: http://biz-application:9601

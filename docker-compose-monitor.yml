@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+
+  monitor-application:
+    build: 
+      context: monitor-application
+    image: micsigen/vaadin-microservice-monitor-application
+    ports:
+     - "8083:8080"
+    networks:
+     - vaadin-microservice
+    deploy:
+      replicas: 1
+
+networks:
+
+  vaadin-microservice:
+    driver: bridge

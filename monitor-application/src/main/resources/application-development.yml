@@ -5,6 +5,6 @@ spring.cloud.config.enabled: false
 endpoints.health.enabled: true
 
 turbine:
-  appConfig: biz-application, admin-application, news-application, proxy-server
+  appConfig: biz-application, admin-application, news-application
   clusterNameExpression: "'default'"
   instanceUrlSuffix: application/hystrix.stream

@@ -6,6 +6,8 @@ services:
     build: 
       context: biz-application
     image: micsigen/vaadin-microservice-biz-application
+    volumes:
+      - /Users/bmajor/Documents/DEV/GitHub/Microservice/vaadin-microservices-demo/h2-databases:/root/h2-databases:ro
     networks:
      - vaadin-microservice
     deploy:
@@ -15,19 +17,23 @@ services:
     build: 
       context: admin-application
     image: micsigen/vaadin-microservice-admin-application
+    ports:
+     - "8082:8080"
     networks:
      - vaadin-microservice
     deploy:
       replicas: 1
 
-  # news-application:
-  #   build: 
-  #     context: news-application
-  #   image: micsigen/vaadin-microservice-news-application
-  #   networks:
-  #    - vaadin-microservice
-  #   deploy:
-  #     replicas: 1
+  news-application:
+    build: 
+      context: news-application
+    image: micsigen/vaadin-microservice-news-application
+    ports:
+     - "8081:8080"
+    networks:
+     - vaadin-microservice
+    deploy:
+      replicas: 1
 
   # proxy-server:
   #   build: 
