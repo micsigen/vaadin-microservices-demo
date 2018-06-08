@@ -7,7 +7,7 @@ services:
       context: biz-application
     image: micsigen/vaadin-microservice-biz-application
     volumes:
-      - /Users/bmajor/Documents/DEV/GitHub/Microservice/vaadin-microservices-demo/h2-databases:/root/h2-databases:ro
+      - /Users/bmajor/Documents/DEV/GitHub/Microservice/vaadin-microservices-demo/h2-databases:/root/h2-databases
     networks:
      - vaadin-microservice
     deploy:

@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+
+  proxy-server:
+    build: 
+      context: proxy-server
+    image: micsigen/vaadin-microservice-proxy-server
+    ports:
+     - "8080:8080"
+    networks:
+     - vaadin-microservice
+    deploy:
+      replicas: 1
+
+  website-application:
+    build: 
+      context: website-application
+    image: micsigen/vaadin-microservice-website-application
+    networks:
+     - vaadin-microservice
+    deploy:
+      replicas: 1
+
+networks:
+
+  vaadin-microservice:
+    driver: bridge

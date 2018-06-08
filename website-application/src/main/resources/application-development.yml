@@ -8,6 +8,6 @@ eureka.client:
 
 hazelcast.max.no.heartbeat.seconds: 60
 
-admin-application.url: http://localhost:8080/admin/companies
+admin-application.url: http://proxy-server:8080/admin/companies
 
-news-application.url: http://localhost:8080/news/twitter
+news-application.url: http://proxy-server:8080/news/twitter
