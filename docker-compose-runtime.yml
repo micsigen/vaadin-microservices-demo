@@ -35,26 +35,6 @@ services:
     deploy:
       replicas: 1
 
-  # proxy-server:
-  #   build: 
-  #     context: proxy-server
-  #   image: micsigen/vaadin-microservice-proxy-server
-  #   networks:
-  #    - vaadin-microservice
-  #   deploy:
-  #     replicas: 1
-
-  # website-application:
-  #   build: 
-  #     context: website-application
-  #   image: micsigen/vaadin-microservice-website-application
-  #   ports:
-  #    - "8080:8080"
-  #   networks:
-  #    - vaadin-microservice
-  #   deploy:
-  #     replicas: 1
-
 networks:
 
   vaadin-microservice:

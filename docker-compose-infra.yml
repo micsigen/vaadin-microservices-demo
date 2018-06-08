@@ -7,7 +7,7 @@ services:
       context: discovery-server
     image: micsigen/vaadin-microservice-discovery-server
     ports:
-     - "8761:8761"
+     - "8761:8080"
     networks:
      - vaadin-microservice
     deploy:
@@ -17,6 +17,8 @@ services:
     build: 
       context: config-server
     image: micsigen/vaadin-microservice-config-server
+    ports:
+     - "8001:8080"
     networks:
      - vaadin-microservice
     depends_on:
