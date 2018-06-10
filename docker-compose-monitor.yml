@@ -11,6 +11,13 @@ services:
     networks:
      - vaadin-microservice
     deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 100M
+        reservations:
+          cpus: '0.25'
+          memory: 20M
       replicas: 1
 
 networks:
