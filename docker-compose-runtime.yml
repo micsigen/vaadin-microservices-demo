@@ -24,8 +24,6 @@ services:
     build: 
       context: admin-application
     image: micsigen/vaadin-microservice-admin-application
-    ports:
-         - "8080:8080"
     networks:
      - vaadin-microservice
     deploy:
@@ -42,8 +40,6 @@ services:
     build:
       context: news-application
     image: micsigen/vaadin-microservice-news-application
-    ports:
-         - "8081:8080"
     networks:
      - vaadin-microservice
     deploy:
