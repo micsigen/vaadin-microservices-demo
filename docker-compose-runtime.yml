@@ -24,6 +24,8 @@ services:
     build: 
       context: admin-application
     image: micsigen/vaadin-microservice-admin-application
+    ports:
+         - "8080:8080"
     networks:
      - vaadin-microservice
     deploy:
@@ -36,21 +38,21 @@ services:
           memory: 20M
       replicas: 1
 
-  news-application:
-    build: 
-      context: news-application
-    image: micsigen/vaadin-microservice-news-application
-    networks:
-     - vaadin-microservice
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: 100M
-        reservations:
-          cpus: '0.25'
-          memory: 20M
-      replicas: 1
+  # news-application:
+  #   build: 
+  #     context: news-application
+  #   image: micsigen/vaadin-microservice-news-application
+  #   networks:
+  #    - vaadin-microservice
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '0.50'
+  #         memory: 100M
+  #       reservations:
+  #         cpus: '0.25'
+  #         memory: 20M
+  #     replicas: 1
 
 networks:
 

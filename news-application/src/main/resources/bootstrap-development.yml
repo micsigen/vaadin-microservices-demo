@@ -23,4 +23,4 @@ hazelcast.max.no.heartbeat.seconds: 60
 
 biz.application.name: biz-application
 
-biz-application.url: http://biz-application:8080
+#biz-application.url: http://biz-application:8080
