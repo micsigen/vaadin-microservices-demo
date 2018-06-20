@@ -20,22 +20,6 @@ services:
           memory: 20M
       replicas: 1
 
-  website-application:
-    build: 
-      context: website-application
-    image: micsigen/vaadin-microservice-website-application
-    networks:
-     - vaadin-microservice
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: 100M
-        reservations:
-          cpus: '0.25'
-          memory: 20M
-      replicas: 1
-
 networks:
 
   vaadin-microservice:
