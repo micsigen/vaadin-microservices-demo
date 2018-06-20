@@ -21,7 +21,6 @@ services:
      - vaadin-microservice
     depends_on:
      - discovery-server
-    command: ["./wait-for", "http://discovery-server:8761/application/info"]
     deploy:
       replicas: 1
 

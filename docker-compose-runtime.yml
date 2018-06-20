@@ -7,7 +7,7 @@ services:
       context: biz-application
     image: micsigen/vaadin-microservice-biz-application
     volumes:
-      - /Users/bmajor/Documents/DEV/GitHub/Microservice/vaadin-microservices-demo/h2-databases:/root/h2-databases
+      - ./h2-databases:/root/h2-databases
     networks:
      - vaadin-microservice
     deploy:
@@ -26,6 +26,8 @@ services:
     image: micsigen/vaadin-microservice-admin-application
     networks:
      - vaadin-microservice
+    depends_on:
+     - biz-application
     deploy:
       resources:
         limits:
@@ -42,6 +44,29 @@ services:
     image: micsigen/vaadin-microservice-news-application
     networks:
      - vaadin-microservice
+    depends_on:
+     - admin-application
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 100M
+        reservations:
+          cpus: '0.25'
+          memory: 20M
+      replicas: 1
+
+  proxy-server:
+    build:
+      context: proxy-server
+    image: micsigen/vaadin-microservice-proxy-server
+    ports:
+     - "8080:8080"
+    networks:
+     - vaadin-microservice
+    depends_on:
+     - admin-application
+     - news-application
     deploy:
       resources:
         limits:
@@ -53,38 +78,22 @@ services:
       replicas: 1
 
   website-application:
-      build:
-        context: website-application
-      image: micsigen/vaadin-microservice-website-application
-      networks:
-       - vaadin-microservice
-      deploy:
-        resources:
-          limits:
-            cpus: '1.0'
-            memory: 512M
-          reservations:
-            cpus: '0.5'
-            memory: 256M
-        replicas: 1
-
-  proxy-server:
-      build:
-        context: proxy-server
-      image: micsigen/vaadin-microservice-proxy-server
-      ports:
-       - "8080:8080"
-      networks:
-       - vaadin-microservice
-      deploy:
-        resources:
-          limits:
-            cpus: '0.50'
-            memory: 100M
-          reservations:
-            cpus: '0.25'
-            memory: 20M
-        replicas: 1
+    build:
+      context: website-application
+    image: micsigen/vaadin-microservice-website-application
+    networks:
+     - vaadin-microservice
+    depends_on:
+     - proxy-server
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+      replicas: 1
 
 networks:
 

@@ -12,6 +12,9 @@ RUN mvn package -DskipTests
 FROM openjdk:8u131-jdk-alpine
 ENV LANG C.UTF-8
 
-ENTRYPOINT ["java", "-Xmx100m", "-Xms100m", "-jar", "./target/admin-application-0.0.1-SNAPSHOT.jar"]
+RUN apk add --no-cache curl
+
+ENTRYPOINT ["./start-server.sh", "http://biz-application:8080/application/info"]
 
 COPY --from=build /home/lab/target ./target/
+COPY ./start-server.sh .
