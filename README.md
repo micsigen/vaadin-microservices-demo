@@ -4,7 +4,7 @@ This demo shows a Microservices Architecture implemented with [Spring Cloud Netf
 
 # Architecture view
 
-
+![Spring Netflix Microservice Architecture](https://github.com/micsigen/vaadin-microservices-demo/blob/master/media/spring-netflix-microservice-architecture.png)
 
 ## Preprequisit
 
