@@ -68,6 +68,24 @@ services:
             memory: 256M
         replicas: 1
 
+  proxy-server:
+      build:
+        context: proxy-server
+      image: micsigen/vaadin-microservice-proxy-server
+      ports:
+       - "8080:8080"
+      networks:
+       - vaadin-microservice
+      deploy:
+        resources:
+          limits:
+            cpus: '0.50'
+            memory: 100M
+          reservations:
+            cpus: '0.25'
+            memory: 20M
+        replicas: 1
+
 networks:
 
   vaadin-microservice:

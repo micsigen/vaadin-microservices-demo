@@ -1,8 +1,10 @@
-http://localhost:8083/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8080%2Fturbine.stream&title=default
-
 # Microservices with Vaadin demo
 
 This demo shows a Microservices Architecture implemented with [Spring Cloud Netflix](http://cloud.spring.io/spring-cloud-netflix/) and [Vaadin](https://vaadin.com).
+
+# Architecture view
+
+
 
 ## Preprequisit
 
@@ -48,23 +50,12 @@ You can check the running Eureka Discovery on page:
 http://localhost:8761
 ```
 
-**2) Open a new terminal window and start the `biz-application`, `admin-application` and the `news-application` microservices:**
+**2) Open a new terminal window and start the `biz-application`, `admin-application`, `news-application`, `website-application` and `proxy-server` microservices:**
 ```
 docker-compose -f docker-compose-runtime.yml up
 ```
 
 This step start java processes on docker containers and connect to `discovery-server` and `config-server`.
-
-Check the connected microservices on the running Eureka Discovery on page:
-```
-http://localhost:8761
-```
-
-**2) Open a new terminal window and start the `biz-application`, `admin-application` and the `news-application` microservices:**
-```
-docker-compose -f docker-compose-proxy.yml up
-```
-
 This step start _Zuul_ reverse proxy and open 8080 port to the host machine.
 
 Check the connected reverse proxy and website on the running Eureka Discovery on page:
@@ -75,6 +66,24 @@ http://localhost:8761
 Open the application to run next URL on your favorite browser:
 ```
 http://localhost:8080
+```
+
+**3) Open a new terminal window and start the `monitor-application` microservice:**
+```
+docker-compose -f docker-compose-monitor.yml up
+```
+
+This step start the monitor application with Hystrix technology. Open the 8083 port to the host machine.
+
+Check the connected monitor application on the running Eureka Discovery on page:
+```
+http://localhost:8761
+```
+
+Open the application to run next URL on your favorite browser:
+```
+http://localhost:8083/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8080%2Fturbine.stream&title=default
+
 ```
 
 ## Using the demo
